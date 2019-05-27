@@ -89,6 +89,17 @@
       left: .8rem;
       font-size: 20px;
     }
+
+    .sides-border {
+      border-left: 3px solid #c5c5c5;
+      border-right: 3px solid #c5c5c5;
+    }
+
+    .information h5 {
+      font-size: 12px;
+      text-align: left;
+      margin-bottom: 10px;
+    }
   </style>
 </head>
 <body>
@@ -109,7 +120,7 @@
           <h5>Valoracion:</h5>
           <p>Bueno</p>
         </div>
-        <div class="column">
+        <div class="column sides-border">
           <h5>Particulas Suspendidas:</h5>
           <p>PM 2.5 46mcg/mt^3</p>
         </div>
