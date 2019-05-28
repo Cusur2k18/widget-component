@@ -1,8 +1,8 @@
-# Air Checker
+# Widget
 
-![air checker](./docs/demo.jpeg)
+![info-widget](./docs/demo.jpeg)
 
-This is the repo for the air checker app that is displaying on the cusur's web page.
+This is the repo for the info-widget app that is displaying on the cusur's web page.
 
 ## Context
 
@@ -12,17 +12,49 @@ The component should get the information updated from a database that will need 
 
 This repo holds this two apps.
 
-### Air Checker component (acc)
+### Widget component
 
-* the file `air_checker.php` has all the code that renders the component (via ajax)
+* the file `widget.php` has all the code that renders the component (via ajax)
 
 * it exports a function that recieves the dom element where the component should be mounted.
 
-### Air Checker admin (aca)
+### Widget admin
 
-* The `admin/` folders holds the app that works as the `cms` for the component. 
+* The `admin/` folders holds the app that works as the `cms` for the component.
 
 
 ## Deploy
 
-The deploy for the `acc` app is pretty straigforward, just put the code that's inside the `air_checker.php` file within the Drupal code editor.
+The deploy for the `widget` app is pretty straigforward, just put the code that's inside the `widget.php` file within the Drupal code editor.
+
+
+## Database structure
+
+**Models**
+
+| Name     |                          Fields                         |
+|----------|---------------------------------------------------------|
+| Event    | `name`, `is_active`, `level`, `created_at`, `updated_at`|
+| User     | `django-admin-user`                                     |
+| Measure  | `name`, `value`, `event_id`, `created_at`, `updated_at` |
+
+
+## Usage
+
+The `admin` system will serve the needed views so the admin is able to manage the `event` and the `measurements` as needed.
+
+There's an endpoint from the `admin` that return you the active event and the latest measurment for that event:
+
+```
+GET /api/active_info
+```
+
+response object:
+
+```
+{
+  statusCode: int,
+  data: Event
+  error: String | null
+}
+```
