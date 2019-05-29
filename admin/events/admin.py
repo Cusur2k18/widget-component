@@ -3,7 +3,7 @@ from django.contrib import admin
 from .models import Event, Measurement
 
 
-class EventAdmin(admin.ModelAdmin):    
+class EventAdmin(admin.ModelAdmin):
     # Form view
     fields = ['is_active', 'name', 'level']
 

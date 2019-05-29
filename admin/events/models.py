@@ -9,6 +9,10 @@ class Event(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
+    class Meta:
+        verbose_name = 'Evento'
+        verbose_name_plural = 'Eventos'
+
     def _name(self):
         return self.name
     _name.short_description = 'Nombre'
@@ -40,6 +44,10 @@ class Measurement(models.Model):
     event_id = models.ForeignKey(Event, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        verbose_name = 'Medida'
+        verbose_name_plural = 'Medidas'
 
     def __str__(self):
         return self.name
