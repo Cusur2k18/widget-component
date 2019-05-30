@@ -2,7 +2,7 @@ from django.db import models
 
 # Create your models here.
 
-class Event(models.Model):
+class Agent(models.Model):
     name = models.TextField()
     is_active = models.BooleanField(default=False)
     level = models.IntegerField()
@@ -10,8 +10,8 @@ class Event(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     class Meta:
-        verbose_name = 'Evento'
-        verbose_name_plural = 'Eventos'
+        verbose_name = 'Agente'
+        verbose_name_plural = 'Agentes'
 
     def _name(self):
         return self.name
@@ -38,16 +38,16 @@ class Event(models.Model):
         return self.name
 
 
-class Measurement(models.Model):
+class Metric(models.Model):
     name = models.TextField()
     value = models.TextField()
-    event_id = models.ForeignKey(Event, on_delete=models.CASCADE)
+    metric_id = models.ForeignKey(Agent, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
     class Meta:
-        verbose_name = 'Medida'
-        verbose_name_plural = 'Medidas'
+        verbose_name = 'Metrica'
+        verbose_name_plural = 'Metricas'
 
     def __str__(self):
         return self.name

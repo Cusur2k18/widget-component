@@ -1,9 +1,10 @@
 from django.contrib import admin
 
-from .models import Event, Measurement
+from .models import Agent, Metric
 
 
-class EventAdmin(admin.ModelAdmin):
+class AgentAdmin(admin.ModelAdmin):
+    admin.site.site_url
     # Form view
     fields = ['is_active', 'name', 'level']
 
@@ -12,5 +13,5 @@ class EventAdmin(admin.ModelAdmin):
 
 
 # Register your models here.
-admin.site.register(Event, EventAdmin)
-admin.site.register(Measurement)
+admin.site.register(Agent, AgentAdmin)
+admin.site.register(Metric)

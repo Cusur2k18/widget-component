@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     # custom apps
-    'events.apps.EventsConfig',
+    'widget.apps.WidgetConfig',
 ]
 
 MIDDLEWARE = [
