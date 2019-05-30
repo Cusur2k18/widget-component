@@ -1,6 +1,16 @@
 from django.contrib import admin
+from django.contrib.admin import AdminSite
+from django.contrib.auth.admin import UserAdmin
+from django.contrib.auth.models import User
 
 from .models import Agent, Metric
+
+class BaseAdmin(AdminSite):
+	site_header = 'Administracion del Widget Cusur'
+
+
+class CustomUserAdmin(UserAdmin):
+	pass
 
 
 class AgentAdmin(admin.ModelAdmin):
@@ -13,5 +23,7 @@ class AgentAdmin(admin.ModelAdmin):
 
 
 # Register your models here.
-admin.site.register(Agent, AgentAdmin)
-admin.site.register(Metric)
+admin_site = BaseAdmin(name="base")
+admin_site.register(User, CustomUserAdmin)
+admin_site.register(Agent, AgentAdmin)
+admin_site.register(Metric)
