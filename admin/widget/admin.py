@@ -12,18 +12,36 @@ class BaseAdmin(AdminSite):
 class CustomUserAdmin(UserAdmin):
 	pass
 
+class MetricInline(admin.TabularInline):
+    model = Metric
+    extra = 1
+
 
 class AgentAdmin(admin.ModelAdmin):
     admin.site.site_url
-    # Form view
-    fields = ['is_active', 'name', 'level']
 
     # Index view
-    list_display = ('_name', '_is_active', '_level', '_updated_at')
+    list_display = ('_name', '_is_active', '_level', '_updated_at',)
+    
+    # form view
+    fieldsets = [
+        ('Información del agente', { 'fields': ['is_active', 'name', 'level',], 'classes': ['agent-info']}),
+    ]
+
+    inlines = [MetricInline]
+
+    actions = ['toogle_active',]
+
+    def toogle_active(modeladmin, request, queryset):
+        # import pdb; pdb.set_trace()
+        for e in queryset.all():
+            e.is_active=True
+            e.save()
+    toogle_active.short_description = 'Activar agente'
+
 
 
 # Register your models here.
 admin_site = BaseAdmin(name="base")
 admin_site.register(User, CustomUserAdmin)
 admin_site.register(Agent, AgentAdmin)
-admin_site.register(Metric)
