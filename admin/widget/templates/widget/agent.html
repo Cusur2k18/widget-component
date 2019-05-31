@@ -15,30 +15,26 @@
 </head>
 <body>
 
+{% if agent %}
 <!-- Air Checker Component -->
 <div id="ac-component">
   <div class="container has-text-centered">
     
     <!-- Heading -->
     <div class="heading">
-      <h2>Calidad del Aire</h2>
+      <h2>{{agent.name}}</h2>
     </div>
 
     <div class="measurer-content">
       <!-- Info -->
+
       <div class="columns information">
-        <div class="column">
-          <h5>Valoracion:</h5>
-          <p>Bueno</p>
-        </div>
-        <div class="column sides-border">
-          <h5>Particulas Suspendidas:</h5>
-          <p>PM 2.5 46mcg/mt^3</p>
-        </div>
-        <div class="column">
-          <h5>Monoxido de carbono:</h5>
-          <p>CO=0ppm</p>
-        </div>
+      {% for metric in agent.metric_set.all%}
+          <div class="column">
+            <h5>{{ metric.name }}:</h5>
+            <p>{{ metric.value }}</p>
+          </div>
+      {% endfor %}
       </div>
 
       <!-- Measurer -->
@@ -65,13 +61,20 @@
 
       <!-- Footer -->
       <div class="columns measurer-footer">
-        <p>Medicion realizada el 27 de Mayo del 2019, a las 9:00 horas en el CUSur</p>
+        <p>Medicion realizada el {{ agent.updated_at }} horas en el CUSur</p>
         <p class="uipc">UIPC</p>
       </div>
     </div>
 
   </div>
 </div>
+
+{% else %}
+
+{% include 'partials/404.html' %}
+
+{% endif %}
+
   
 </body>
 </html>
