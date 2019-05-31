@@ -1,0 +1,90 @@
+#ac-component {
+  margin-top: 20%;
+
+  * {
+    font-weight: bold;
+  }
+
+  .container {
+    max-width: 500px;  
+  }
+}
+
+.traffic-light {
+  
+  &:nth-child(even) {
+    margin: 0 .2rem;
+  }
+
+  &:after {
+    background: black;
+    bottom: 70px;
+    content: "";
+    display: block;
+    height: 48px;
+    left: 79px;
+    position: relative;
+    width: 5px;
+  }
+
+  &:last-child:after {
+    background: transparent;
+  }
+}
+
+.heading {
+  padding: 2rem;
+  font-size: 30px;
+  background: #140E49;
+  color: white;
+  font-weight: bold;
+}
+
+.measurer {
+  max-height: 130px;
+}
+
+.measurer-content {
+  background: rgb(213,213,213);
+  background: linear-gradient(90deg, rgba(213,213,213,1) 0%, rgba(255,255,255,1) 100%);
+
+  &:after {
+    background: black;
+    bottom: 0;
+    content: "";
+    display: block;
+    height: 3px;
+    left: 0;
+    position: relative;
+    width: 100%;
+  }
+}
+
+.measurer-footer {
+  position: relative;
+  bottom: 40px;
+  left: 50px;
+  text-align: center;
+  font-size: 11px;
+  font-weight: bold;
+
+  .uipc {
+    position: relative;
+    top: 1.2rem;
+    left: .8rem;
+    font-size: 20px;
+  }
+}
+
+.sides-border {
+  border-left: 3px solid #c5c5c5;
+  border-right: 3px solid #c5c5c5;
+}
+
+.information {
+  h5 {
+    font-size: 12px;
+    text-align: left;
+    margin-bottom: 10px;
+  }
+}

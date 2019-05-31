@@ -38,6 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    # Sass
+    'sass_processor',
+
     # custom apps
     'widget.apps.WidgetConfig',
 ]
@@ -71,6 +74,14 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'widget_admin.wsgi.application'
+
+
+STATICFILES_FINDERS = [
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'sass_processor.finders.CssFinder',
+]
+
+SASS_PROCESSOR_ROOT = os.path.join(BASE_DIR, 'static')
 
 
 # Database

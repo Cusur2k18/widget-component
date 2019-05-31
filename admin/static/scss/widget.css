@@ -1,0 +1,69 @@
+#ac-component {
+  margin-top: 20%; }
+  #ac-component * {
+    font-weight: bold; }
+  #ac-component .container {
+    max-width: 500px; }
+
+.traffic-light:nth-child(even) {
+  margin: 0 .2rem; }
+
+.traffic-light:after {
+  background: black;
+  bottom: 70px;
+  content: "";
+  display: block;
+  height: 48px;
+  left: 79px;
+  position: relative;
+  width: 5px; }
+
+.traffic-light:last-child:after {
+  background: transparent; }
+
+.heading {
+  padding: 2rem;
+  font-size: 30px;
+  background: #140E49;
+  color: white;
+  font-weight: bold; }
+
+.measurer {
+  max-height: 130px; }
+
+.measurer-content {
+  background: #d5d5d5;
+  background: linear-gradient(90deg, #d5d5d5 0%, white 100%); }
+  .measurer-content:after {
+    background: black;
+    bottom: 0;
+    content: "";
+    display: block;
+    height: 3px;
+    left: 0;
+    position: relative;
+    width: 100%; }
+
+.measurer-footer {
+  position: relative;
+  bottom: 40px;
+  left: 50px;
+  text-align: center;
+  font-size: 11px;
+  font-weight: bold; }
+  .measurer-footer .uipc {
+    position: relative;
+    top: 1.2rem;
+    left: .8rem;
+    font-size: 20px; }
+
+.sides-border {
+  border-left: 3px solid #c5c5c5;
+  border-right: 3px solid #c5c5c5; }
+
+.information h5 {
+  font-size: 12px;
+  text-align: left;
+  margin-bottom: 10px; }
+
+/*# sourceMappingURL=widget.css.map */
