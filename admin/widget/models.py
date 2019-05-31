@@ -48,10 +48,6 @@ class Agent(models.Model):
         self.validate_uniqueness_active()
         super(Agent, self).save(*args, **kwargs)
 
-    def update(self, *args, **kwargs):
-        self.validate_uniqueness_active()
-        super(Agent, self).update(*args, **kwargs)
-
     def __str__(self):
         return self.name
 
