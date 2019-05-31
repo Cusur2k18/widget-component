@@ -1,5 +1,6 @@
 import json
 from django.http import JsonResponse
+from django.shortcuts import render
 from django.core.exceptions import ObjectDoesNotExist
 from django.forms.models import model_to_dict
 from .models import Agent
@@ -17,3 +18,18 @@ def index(request):
 
 	except ObjectDoesNotExist:
 		return JsonResponse({"error":"no metrics"})
+
+def widget(request):
+	return render(request, 'widget/agent.html', {'foo': 'bar',})
+
+	# try:
+	# 	agents = Agent.objects.filter(is_active=True)
+
+	# 	if (not agents):
+	# 		raise ObjectDoesNotExist
+		
+	# 	metrics = list(agents.first().metric_set.all().values())
+	# 	return JsonResponse({"agent": list(agents.values())[0], "metrics": metrics})
+
+	# except ObjectDoesNotExist:
+	# 	return JsonResponse({"error":"no metrics"})
