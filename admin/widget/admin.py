@@ -35,9 +35,9 @@ class AgentAdmin(admin.ModelAdmin):
     def toogle_active(modeladmin, request, queryset):
         # import pdb; pdb.set_trace()
         for e in queryset.all():
-            e.is_active=True
+            e.is_active=not e.is_active
             e.save()
-    toogle_active.short_description = 'Activar agente'
+    toogle_active.short_description = 'Activar/Desactivar agente(s)'
 
 
 

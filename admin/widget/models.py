@@ -59,7 +59,7 @@ class Agent(models.Model):
 class Metric(models.Model):
     name = models.CharField('Nombre', max_length=100)
     value = models.CharField('Valor', max_length=100)
-    metric_id = models.ForeignKey(Agent, on_delete=models.CASCADE, verbose_name="Metrica")
+    agent = models.ForeignKey(Agent, on_delete=models.CASCADE, verbose_name="Metrica")
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
