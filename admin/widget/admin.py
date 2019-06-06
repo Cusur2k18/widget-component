@@ -3,7 +3,7 @@ from django.contrib.admin import AdminSite
 from django.contrib.auth.admin import UserAdmin
 from django.contrib.auth.models import User
 
-from .models import Agent, Metric
+from .models import Agent, Metric, Widget
 
 class BaseAdmin(AdminSite):
 	site_header = 'Administracion del Widget Cusur'
@@ -16,19 +16,23 @@ class MetricInline(admin.TabularInline):
     model = Metric
     extra = 1
 
+class WidgetInline(admin.TabularInline):
+    model = Widget
+    extra = 1
+
 
 class AgentAdmin(admin.ModelAdmin):
     admin.site.site_url
 
     # Index view
-    list_display = ('_name', '_is_active', '_level', '_updated_at',)
+    list_display = ('_name', '_is_active', '_updated_at',)
     
     # form view
     fieldsets = [
-        ('Información del agente', { 'fields': ['is_active', 'name', 'level',], 'classes': ['agent-info']}),
+        ('Información del agente', { 'fields': ['is_active', 'name',], 'classes': ['agent-info']}),
     ]
 
-    inlines = [MetricInline]
+    inlines = [WidgetInline, MetricInline]
 
     actions = ['toogle_active',]
 

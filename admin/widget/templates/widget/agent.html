@@ -29,7 +29,7 @@
       <!-- Info -->
 
       <div class="columns information">
-      {% for metric in agent.metric_set.all%}
+      {% for metric in agent.metric_set.all %}
           <div class="column">
             <h5>{{ metric.name }}:</h5>
             <p>{{ metric.value }}</p>
@@ -39,24 +39,7 @@
 
       <!-- Measurer -->
       <div class="columns is-centered measurer">
-        <div class="traffic-light">
-          <img src="/static/img/green-light-strong.png" alt="Gray" width="80">
-        </div>
-        <div class="traffic-light">
-          <img src="/static/img/green-light-soft.png" alt="Gray" width="80">
-        </div>
-        <div class="traffic-light">
-          <img src="/static/img/orange-light-strong.png" alt="Gray" width="80">
-        </div>
-        <div class="traffic-light">
-          <img src="/static/img/orange-light-soft.png" alt="Gray" width="80">
-        </div>
-        <div class="traffic-light">
-          <img src="/static/img/red-light-strong.png" alt="Gray" width="80">
-        </div>
-        <div class="traffic-light">
-          <img src="/static/img/gray-light.png" alt="Gray" width="80">
-        </div>
+        {% include 'partials/widget.html' with level=agent.widget.total_level %}
       </div>
 
       <!-- Footer -->

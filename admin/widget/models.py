@@ -5,7 +5,6 @@ from django.db import models
 class Agent(models.Model):
     name = models.CharField('Nombre', max_length=100)
     is_active = models.BooleanField('Activo',default=False)
-    level = models.IntegerField('Nivel', default=0)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
@@ -22,9 +21,6 @@ class Agent(models.Model):
     _is_active.short_description = 'Activo'
     _is_active.boolean = True
 
-    def _level(self):
-        return self.level
-    _level.short_description = 'Nivel'
 
     def _created_at(self):
         return self.created_at
@@ -55,7 +51,7 @@ class Agent(models.Model):
 class Metric(models.Model):
     name = models.CharField('Nombre', max_length=100)
     value = models.CharField('Valor', max_length=100)
-    agent = models.ForeignKey(Agent, on_delete=models.CASCADE, verbose_name="Metrica")
+    agent = models.ForeignKey(Agent, on_delete=models.CASCADE, verbose_name="Agent")
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
@@ -65,3 +61,32 @@ class Metric(models.Model):
 
     def __str__(self):
         return self.name
+    
+
+class Widget(models.Model):
+    WIDGET_LEVEL_VALUES = [
+        (3, 'Tres'),
+        (5, 'Cinco'),
+        (6, 'Seis'),
+    ]
+
+    label = models.CharField('Label', max_length=50, default="")
+    level = models.IntegerField('Nivel', default=0)
+    total_level = models.IntegerField('Total', choices=WIDGET_LEVEL_VALUES, default=3)
+    agent = models.OneToOneField(Agent, on_delete=models.CASCADE, verbose_name="Agent", primary_key=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        verbose_name = 'Widget'
+        verbose_name_plural = 'Widgets'
+
+    def __str__(self):
+        return self.label
+    
+    def _level(self):
+        return self.level
+    _level.short_description = 'Nivel'
+
+    # def get_absolute_url(self):
+    #     return reverse("Widget_detail", kwargs={"pk": self.pk})

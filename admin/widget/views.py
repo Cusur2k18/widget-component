@@ -20,7 +20,7 @@ def index(request):
 		return JsonResponse({"error":"no metrics"})
 
 def widget(request):
-	agents = Agent.objects.prefetch_related('metric_set').filter(is_active=True)
+	agents = Agent.objects.prefetch_related('metric_set', 'widget').filter(is_active=True)
 	# import pdb; pdb.set_trace()
 	return render(request, 'widget/agent.html', { "agent": agents.first() })
 
