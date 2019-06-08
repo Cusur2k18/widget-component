@@ -6,7 +6,8 @@ from django.contrib.auth.models import User
 from .models import Agent, Metric, Widget
 
 class BaseAdmin(AdminSite):
-	site_header = 'Administracion del Widget Cusur'
+    site_header = 'Administracion del Widget Cusur'
+
 
 
 class CustomUserAdmin(UserAdmin):
@@ -22,7 +23,12 @@ class WidgetInline(admin.TabularInline):
 
 
 class AgentAdmin(admin.ModelAdmin):
-    admin.site.site_url
+
+    class Media:
+        js = ('admin/js/vendor/jquery/jquery.min.js', 'admin/js/jquery.init.js', 'js/main.js',)
+        css = {
+            'all': ('scss/admin.css',)
+        }
 
     # Index view
     list_display = ('_name', '_is_active', '_updated_at',)

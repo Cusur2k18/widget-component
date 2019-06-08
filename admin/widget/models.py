@@ -3,7 +3,7 @@ from django.db import models
 # Create your models here.
 
 class Agent(models.Model):
-    name = models.CharField('Nombre', max_length=100)
+    name = models.CharField('Nombre', max_length=100, blank=False)
     is_active = models.BooleanField('Activo',default=False)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -70,7 +70,7 @@ class Widget(models.Model):
         (6, 'Seis'),
     ]
 
-    label = models.CharField('Label', max_length=50, default="")
+    label = models.CharField('Label', max_length=50, default="", blank=True)
     level = models.IntegerField('Nivel', default=0)
     total_level = models.IntegerField('Total', choices=WIDGET_LEVEL_VALUES, default=3)
     agent = models.OneToOneField(Agent, on_delete=models.CASCADE, verbose_name="Agent", primary_key=True)
