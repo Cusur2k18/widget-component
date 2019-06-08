@@ -18,7 +18,16 @@
       const $totalLevelDrowpdown = $('#id_widget-0-total_level')
       const max = $totalLevelDrowpdown.val()
       setLevelValues(1, max)
+      addLevelHelpermImage(max)
 
+    }
+
+    function addLevelHelpermImage(level) {
+      const $widgetContainer = $('#widget-group')
+      const $imageHelper = $('<img />').attr("src", '/static/img/' + level + '-widget-complete.png')
+      const $imageContainer = $('<div class="level-helper-img-container"></div>').html($imageHelper)
+      $('.level-helper-img-container').remove()
+      $widgetContainer.after($imageContainer)
     }
   
     function initListeners() {
@@ -27,6 +36,7 @@
       $('body').on('change', '#id_widget-0-total_level', function(e){
         const max = e.target.value
         setLevelValues(1, max)
+        addLevelHelpermImage(max)
       })
 
       // Agent form level number input
