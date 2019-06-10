@@ -1,30 +1,15 @@
-{% if level == 3 %}
-  <p>3</p>
-{% endif %}
+{% load widget_extras %}
 
-{% if level == 5 %}
-  <p>5</p>
-{% endif %}
+{% for x in total %}
+  {% if x < agent.widget.level %}
+    <div class="traffic-light">
+      {% widget_color colors total=agent.widget.total_level current=x as widget_url %}
+      <img src="{{widget_url}}" alt="color-widget" width="80">
+    </div>
 
-{% if level == 6 %}
-  <p>6</p>
-{% endif %}
-
-<div class="traffic-light" data-o="{{ agent.widget.total_level }}">
-  <img src="/static/img/green-light-strong.png" alt="Gray" width="80">
-</div>
-<div class="traffic-light">
-  <img src="/static/img/green-light-soft.png" alt="Gray" width="80">
-</div>
-<div class="traffic-light">
-  <img src="/static/img/orange-light-strong.png" alt="Gray" width="80">
-</div>
-<div class="traffic-light">
-  <img src="/static/img/orange-light-soft.png" alt="Gray" width="80">
-</div>
-<div class="traffic-light">
-  <img src="/static/img/red-light-strong.png" alt="Gray" width="80">
-</div>
-<div class="traffic-light">
-  <img src="/static/img/gray-light.png" alt="Gray" width="80">
-</div>
+    {% else %}
+      <div class="traffic-light">
+        <img src="/static/img/single-gray.png" alt="color-widget" width="80">
+      </div>
+  {% endif %}
+{% endfor %}

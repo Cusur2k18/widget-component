@@ -21,8 +21,14 @@ def index(request):
 
 def widget(request):
 	agents = Agent.objects.prefetch_related('metric_set', 'widget').filter(is_active=True)
+	agent = agents.first()
+	colors = {
+		3: ['green', 'yellow', 'red'],
+		5: ['blue', 'green', 'yellow', 'orange', 'red'],
+		6: ['green', 'yellow', 'orange', 'red', 'purple', 'redbrown']
+	}
 	# import pdb; pdb.set_trace()
-	return render(request, 'widget/agent.html', { "agent": agents.first() })
+	return render(request, 'widget/agent.html', { "agent": agent, "colors": colors, "total": range(agent.widget.total_level) })
 
 	# try:
 	# 	agents = Agent.objects.filter(is_active=True)

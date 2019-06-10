@@ -17,7 +17,10 @@
     function setDefaultLevelDropdown() {
       const $totalLevelDrowpdown = $('#id_widget-0-total_level')
       const max = $totalLevelDrowpdown.val()
-      setLevelValues(1, max)
+
+      if ($('body:contains("Añadir Agente")').length > 0) {
+        setLevelValues(1, max)
+      }
       addLevelHelpermImage(max)
 
     }
