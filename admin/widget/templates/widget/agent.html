@@ -16,39 +16,37 @@
 <body>
 
 {% if agent %}
-<!-- Air Checker Component -->
-<div id="ac-component">
-  <div class="container has-text-centered">
-    
-    <!-- Heading -->
-    <div class="heading">
-      <h2>{{agent.name}}</h2>
-    </div>
 
-    <div class="measurer-content">
-      <!-- Info -->
-
-      <div class="columns information">
-      {% for metric in agent.metric_set.all %}
-          <div class="column">
-            <h5>{{ metric.name }}:</h5>
-            <p>{{ metric.value }}</p>
-          </div>
-      {% endfor %}
+<div class="app-container">
+  <!-- Air Checker Component -->
+  <div id="ac-component">
+      <!-- Heading -->
+      <div class="heading">
+        <h2>{{agent.name}}</h2>
       </div>
 
-      <!-- Measurer -->
-      <div class="columns is-centered measurer">
-        {% include 'partials/widget.html' with level=agent.widget.total_level %}
-      </div>
+      <div class="measurer-content">
+        <!-- Info -->
 
-      <!-- Footer -->
-      <div class="columns measurer-footer">
-        <p>Medicion realizada el {{ agent.updated_at }} horas en el CUSur</p>
-        <p class="uipc">UIPC</p>
-      </div>
-    </div>
+        <div class="columns information">
+        {% for metric in agent.metric_set.all %}
+            <div class="column">
+              <h5>{{ metric.name }}:</h5>
+              <p>{{ metric.value }}</p>
+            </div>
+        {% endfor %}
+        </div>
 
+        <!-- Measurer -->
+        <div class="columns is-centered measurer">
+          {% include 'partials/widget.html' with level=agent.widget.total_level %}
+        </div>
+
+        <!-- Footer -->
+        <div class="columns measurer-footer">
+          <p>Medicion realizada el {{ agent.updated_at }} horas en el CUSur</p>
+        </div>
+      </div>
   </div>
 </div>
 

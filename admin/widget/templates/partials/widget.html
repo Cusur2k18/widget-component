@@ -4,12 +4,12 @@
   {% if x < agent.widget.level %}
     <div class="traffic-light">
       {% widget_color colors total=agent.widget.total_level current=x as widget_url %}
-      <img src="{{widget_url}}" alt="color-widget" width="80">
+      <img src="{{widget_url}}" alt="color-widget" width="40">
     </div>
 
     {% else %}
       <div class="traffic-light">
-        <img src="/static/img/single-gray.png" alt="color-widget" width="80">
+        <img src="/static/img/single-gray.png" alt="color-widget" width="40">
       </div>
   {% endif %}
 {% endfor %}
