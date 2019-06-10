@@ -1,7 +1,8 @@
 {% load widget_extras %}
 
+<span data-i="{{total}}"></span>
 {% for x in total %}
-  {% if x < agent.widget.level %}
+  {% if x == agent.widget.level %}
     <div class="traffic-light">
       {% widget_color colors total=agent.widget.total_level current=x as widget_url %}
       <img src="{{widget_url}}" alt="color-widget" width="40">

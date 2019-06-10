@@ -28,7 +28,7 @@ def widget(request):
 		6: ['green', 'yellow', 'orange', 'red', 'purple', 'redbrown']
 	}
 	# import pdb; pdb.set_trace()
-	return render(request, 'widget/agent.html', { "agent": agent, "colors": colors, "total": range(agent.widget.total_level) })
+	return render(request, 'widget/agent.html', { "agent": agent, "colors": colors, "total": range(1, agent.widget.total_level + 1) })
 
 	# try:
 	# 	agents = Agent.objects.filter(is_active=True)

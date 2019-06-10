@@ -7,4 +7,4 @@ register = template.Library()
 def widget_color(dictionary, *args, **kwargs):
     total = kwargs['total']
     level = kwargs['current']
-    return '/static/img/single-' + str(total) + '-' + dictionary.get(total)[level] + '.png'
+    return '/static/img/single-' + str(total) + '-' + dictionary.get(total)[level - 1] + '.png'
