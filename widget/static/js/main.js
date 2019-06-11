@@ -5,23 +5,28 @@
     function setLevelValues(min, max) {
       const $levelDropdown = $('#id_widget-0-level')
 
-      $levelDropdown.val(max)
-      $levelDropdown.attr({
-        "min": min, 
-        "max": max
-      })
-      $levelDropdown.data('min', min)
-      $levelDropdown.data('max', parseInt(max))
+      if ($levelDropdown) {
+        $levelDropdown.val(max)
+        $levelDropdown.attr({
+          "min": min, 
+          "max": max
+        })
+        $levelDropdown.data('min', min)
+        $levelDropdown.data('max', parseInt(max))
+      }
+
     }
 
     function setDefaultLevelDropdown() {
       const $totalLevelDrowpdown = $('#id_widget-0-total_level')
       const max = $totalLevelDrowpdown.val()
 
-      if ($('body:contains("Añadir Agente")').length > 0) {
-        setLevelValues(1, max)
+      if ($totalLevelDrowpdown) {
+        if ($('body:contains("Añadir Agente")').length > 0) {
+          setLevelValues(1, max)
+        }
+        addLevelHelpermImage(max)
       }
-      addLevelHelpermImage(max)
 
     }
 
