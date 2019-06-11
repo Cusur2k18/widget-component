@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+cd "$1" || exit 1
+echo "----------> Compiling Sass"
+python manage.py compilescss --traceback
+echo "----------> Collection static files"
+python manage.py collectstatic --noinput --traceback
+echo "----------> Run migrations"
+python manage.py migrate
+echo "----------> Post compile script finished"
