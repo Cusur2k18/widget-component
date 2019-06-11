@@ -5,7 +5,7 @@
     function setLevelValues(min, max) {
       const $levelDropdown = $('#id_widget-0-level')
 
-      if ($levelDropdown) {
+      if ($levelDropdown.length) {
         $levelDropdown.val(max)
         $levelDropdown.attr({
           "min": min, 
@@ -21,7 +21,7 @@
       const $totalLevelDrowpdown = $('#id_widget-0-total_level')
       const max = $totalLevelDrowpdown.val()
 
-      if ($totalLevelDrowpdown) {
+      if ($totalLevelDrowpdown.length) {
         if ($('body:contains("Añadir Agente")').length > 0) {
           setLevelValues(1, max)
         }
