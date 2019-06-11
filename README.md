@@ -1,5 +1,7 @@
 # Widget
 
+[![Codeship Status for Cusur2k18/widget-component](https://app.codeship.com/projects/8e7a1b10-6e87-0137-fb62-5eece20c64d0/status?branch=master)](https://app.codeship.com/projects/347345)
+
 ![info-widget](./docs/demo.jpeg)
 
 This is the repo for the info-widget app that is displaying on the cusur's web page.
