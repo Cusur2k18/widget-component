@@ -1,0 +1,1 @@
+web: gunicorn widget_admin.wsgi
