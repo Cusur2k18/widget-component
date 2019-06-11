@@ -6,3 +6,6 @@
 
 *.css
 *.map
+
+*.pyc
+staticfiles

@@ -1,5 +1,7 @@
 # Widget
 
+[![Codeship Status for Cusur2k18/widget-component](https://app.codeship.com/projects/8e7a1b10-6e87-0137-fb62-5eece20c64d0/status?branch=master)](https://app.codeship.com/projects/347345)
+
 ![info-widget](./docs/demo.jpeg)
 
 This is the repo for the info-widget app that is displaying on the cusur's web page.
@@ -19,13 +21,56 @@ This repo holds this two apps.
 * it exports a function that recieves the dom element where the component should be mounted.
 
 ### Widget admin
+> Admin system for the widget
 
-* The `admin/` folders holds the app that works as the `cms` for the component.
+## Development
 
+First clone the project:
 
-## Deploy
+```bash
+git clone
+```
 
-The deploy for the `widget` app is pretty straigforward, just put the code that's inside the `widget.php` file within the Drupal code editor.
+I strongly recommend use [virtual environments]().
+
+Create your venv:
+
+```bash
+python -m venv .venv
+```
+
+Activate the venv:
+
+```bash
+source .venv/bin/activate
+```
+
+Now you can safely install the dependencies listed on `requirements.txt`:
+
+```bash
+$venv > pip install -r requirements.txt
+```
+
+Run the migrations:
+
+```bash
+$venv > python manage.py migrate
+```
+
+You'll need to create a `superuser`:
+
+```bash
+$venv > python manage.py createsuperuser
+```
+> Enter the username and password
+
+Run the development server:
+
+```bash
+$venv > python manage.py runserver
+```
+
+Go to `localhost:8000/admin` and enjoy!
 
 
 ## Database structure
@@ -46,15 +91,5 @@ The `admin` system will serve the needed views so the admin is able to manage th
 There's an endpoint from the `admin` that return you the active event and the latest measurment for that event:
 
 ```
-GET /api/active_info
-```
-
-response object:
-
-```
-{
-  statusCode: int,
-  data: Event
-  error: String | null
-}
+GET /widget/agent
 ```

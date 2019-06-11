@@ -16,8 +16,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from widget.admin import admin_site
+from django.http import HttpResponseRedirect
 
 urlpatterns = [
+    path('', lambda r: HttpResponseRedirect('admin/')),
     path('admin/', admin_site.urls),
     path('widget/', include('widget.urls'))
 ]
