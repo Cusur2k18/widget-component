@@ -17,9 +17,13 @@ from django.contrib import admin
 from django.urls import path, include
 from widget.admin import admin_site
 from django.http import HttpResponseRedirect
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('', lambda r: HttpResponseRedirect('admin/')),
     path('admin/', admin_site.urls),
     path('widget/', include('widget.urls'))
 ]
+
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
