@@ -27,7 +27,7 @@ class AgentAdmin(admin.ModelAdmin):
     class Media:
         js = ('admin/js/vendor/jquery/jquery.min.js', 'admin/js/jquery.init.js', 'js/main.js',)
         css = {
-            'all': ('scss/admin.css',)
+            'all': ('css/admin.css',)
         }
 
     # Index view
