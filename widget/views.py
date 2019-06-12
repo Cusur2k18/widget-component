@@ -15,4 +15,7 @@ def widget(request):
 		6: ['green', 'yellow', 'orange', 'red', 'purple', 'redbrown']
 	}
 	# import pdb; pdb.set_trace()
-	return render(request, 'widget/agent.html', { "agent": agent, "colors": colors, "total": range(1, agent.widget.total_level + 1) })
+	if (agent is not None):
+		return render(request, 'widget/agent.html', { "agent": agent, "colors": colors, "total": range(1, agent.widget.total_level + 1) })
+	
+	return render(request, 'partials/404.html', {})
