@@ -1,4 +1,3 @@
-from django.conf import settings
 from django.contrib import admin
 from django.contrib.admin import AdminSite
 from django.contrib.auth.admin import UserAdmin
@@ -27,9 +26,6 @@ class AgentAdmin(admin.ModelAdmin):
 
     class Media:
         js = ('admin/js/vendor/jquery/jquery.min.js', 'admin/js/jquery.init.js', 'js/main.js',)
-        css = {
-            'all': (settings.STATIC_URL + 'css/admin.css',)
-        }
 
     # Index view
     list_display = ('_name', '_is_active', '_updated_at',)
