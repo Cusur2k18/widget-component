@@ -3,9 +3,8 @@
 
 *.sqlite3
 
-
-*.css
 *.map
+widget.css
 
 *.pyc
 staticfiles
