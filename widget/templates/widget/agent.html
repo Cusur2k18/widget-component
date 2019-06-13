@@ -1,21 +1,22 @@
 {% load sass_tags %}
+{% load static %}
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   
   <!-- Bulma css -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css">
+  <link href="{% static 'css/bulma.min.css' %}" rel="stylesheet" type="text/css" />
   <link href="{% sass_src 'css/widget.scss' %}" rel="stylesheet" type="text/css" />
   <title>Calidad del aire</title>
 
 </head>
 <body>
 
-<div class="app-container">
+{% comment %} <div class="app-container"> {% endcomment %}
   <!-- Air Checker Component -->
   <div id="ac-component">
       <!-- Heading -->
@@ -26,7 +27,7 @@
       <div class="measurer-content">
         <!-- Info -->
 
-        <div class="columns information">
+        <div class="columns is-mobile information">
         {% for metric in agent.metric_set.all %}
             <div class="column">
               <h5>{{ metric.name }}:</h5>
@@ -36,17 +37,20 @@
         </div>
 
         <!-- Measurer -->
-        <div class="columns is-centered measurer">
+        <div class="columns is-mobile is-centered measurer">
           {% include 'partials/widget.html' with level=agent.widget.total_level %}
         </div>
 
         <!-- Footer -->
-        <div class="columns measurer-footer">
+        <div class="columns is-mobile measurer-footer is-centered">
           <p>Medicion realizada el {{ agent.updated_at }} horas en el CUSur</p>
         </div>
       </div>
   </div>
-</div>
+
+{% comment %} </div> {% endcomment %}
+
+<script src="{% static 'js/widget.js'%}"></script>
   
 </body>
 </html>

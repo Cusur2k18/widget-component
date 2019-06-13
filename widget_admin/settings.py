@@ -162,7 +162,7 @@ SASS_PROCESSOR_ROOT = os.path.join(BASE_DIR, 'static')
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 
-X_FRAME_OPTIONS = 'ALLOW-FROM http://cusur.udg.mx/prueba1/'
+X_FRAME_OPTIONS = 'allow-from http://cusur.udg.mx/prueba1/'
 
 # Configure Django App for Heroku.
 import django_heroku
