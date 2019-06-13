@@ -1,4 +1,5 @@
 {% extends "admin/base_site.html" %}
+{% load i18n %}
 
 {% block extrastyle %}
 <style>
@@ -87,15 +88,38 @@
       width: 85%;
       height: 70px;
     }
+    input.erase-cache-button {
+        background: #F24452;
+        margin-right: 1rem;
+        transition: .3s;
+    }
+    input.erase-cache-button:hover, input.erase-cache-button:focus {
+        background: #D93D4A;
+    }
+    input.erase-cache-button:active {
+        transform: scale(.9);
+        background: #D93D4A;
+    }
+    .erase-cache-form {
+        display: inline-block;
+    }
 
 </style>
 {% endblock %}
 
-{% comment %} 
-{% load static %}
+{% block welcome-msg %}
+    <form action="{% url 'erase_cache' %}" method="post" class="erase-cache-form">
+        {% csrf_token %}
+        <input type="hidden" name="uri" value="{{ request.path_info }}">
+        <input type="submit" id="clear-cache-btn" value="Borrar cache" class="erase-cache-button" />
+    </form>
+    {% trans 'Welcome,' %}
+    <strong>{% firstof user.get_short_name user.get_username %}</strong>.
+{% endblock %}
 
-{% block branding %}{% endblock %}
-
-{% block extrahead %}
-<link rel="shortcut icon" href="{% static 'img/favicon.ico' %}" />
-{% endblock %} {% endcomment %}
+{% block userlinks %}
+    {% if user.has_usable_password %}
+    <a href="{% url 'admin:password_change' %}">{% trans 'Change password' %}</a> /
+    {% endif %}
+    <a href="{% url 'admin:logout' %}">{% trans 'Log out' %}</a>
+{% endblock %}

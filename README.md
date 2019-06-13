@@ -31,6 +31,19 @@ First clone the project:
 git clone
 ```
 
+Then create a `.env` file with the following content:
+
+```
+SECRET_KEY=<generated_key>
+DEBUG=True
+ADMIN_NAME=<chris>
+ADMIN_EMAIL=<email>
+REDIS_URL=redis://127.0.0.1:6379/1
+CACHE_TTL=10
+```
+
+> You need to have redis running locally
+
 I strongly recommend use [virtual environments]().
 
 Create your venv:

@@ -112,11 +112,11 @@ CACHES = {
     "default": {
         "BACKEND": "django_redis.cache.RedisCache",
         "LOCATION": config('REDIS_URL'),
+        "KEY_PREFIX": "widget_",
         "OPTIONS": {
             "CLIENT_CLASS": "django_redis.client.DefaultClient",
         }
     },
-    "KEY_PREFIX": "widget"
 }
 
 CACHE_TTL = 60 * int(config('CACHE_TTL'))
