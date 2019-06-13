@@ -58,6 +58,15 @@
           $(this).val($(this).data('min'))
         }
       })
+
+      // Cache delete button
+      $('body').on('click', '#clear-cache-btn', function(e) {
+        const sureDelete = confirm('Estas seguro de borrar el caché?')
+        if (!sureDelete) {
+          e.preventDefault()
+          return
+        }
+      })
     }
   
     function init() {
