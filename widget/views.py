@@ -1,11 +1,12 @@
-import json
-from django.http import JsonResponse
+from django.conf import settings
+from django.core.cache.backends.base import DEFAULT_TIMEOUT
+from django.views.decorators.cache import cache_page
 from django.shortcuts import render
-from django.core.exceptions import ObjectDoesNotExist
-from django.forms.models import model_to_dict
 from .models import Agent
 
+CACHE_TTL = getattr(settings, 'CACHE_TTL', DEFAULT_TIMEOUT)
 
+@cache_page(CACHE_TTL)
 def widget(request):
 	agents = Agent.objects.prefetch_related('metric_set', 'widget').filter(is_active=True)
 	agent = agents.first()
