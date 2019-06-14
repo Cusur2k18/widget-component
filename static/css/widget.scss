@@ -13,7 +13,9 @@
   box-sizing: border-box;
 
   * {
-    font-weight: bold;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    letter-spacing: 0;
   }
 
   .container {
@@ -34,11 +36,11 @@
 
   &:after {
     background: black;
-    bottom: 38px;
+    bottom: 53%;
     content: "";
     display: block;
     height: 28px;
-    left: 39px;
+    left: 98%;
     position: relative;
     width: 5px;
   }
@@ -49,16 +51,21 @@
 }
 
 .heading {
-  padding: 11px;
-  font-size: 20px;
+  padding: 10px;
+  font-size: 25px;
   background: #140E49;
   color: white;
   text-align: center;
-  text-transform: capitalize;
+  text-transform: none;
+
+  h2 {
+    padding-bottom: 5px;
+  }
 }
 
 .measurer {
   max-height: 130px;
+  padding: 0 5px;
 }
 
 .measurer-content {
@@ -85,6 +92,10 @@
   font-size: 7px;
   font-weight: bold;
 
+  p {
+    color: black;
+  }
+
   .uipc {
     position: relative;
     top: 1.2rem;
@@ -99,15 +110,17 @@
 }
 
 .information {
+  padding-bottom: 2px;
+
   h5 {
-    font-size: 9px;
+    font-size: 7px;
     text-align: left;
-    margin-bottom: 10px;
+    margin: 6px 0;
     color: black;
     padding-left: 5px;
   }
   p {
-    font-size: 14px;
+    font-size: 12px;
     text-align: center;
     color: black;
   }
