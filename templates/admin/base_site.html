@@ -1,5 +1,6 @@
 {% extends "admin/base_site.html" %}
 {% load i18n %}
+{% load static %}
 
 {% block extrastyle %}
 <style>
@@ -9,9 +10,14 @@
         --primary-color-faded: #8364bf;
         --secondary-color: #c916f4;
         --title-admin-page: #fff;
+
+        --primary-color: #37648C;
+        --primary-color-faded: #8FA9BF;
+        --secondary-color: #c916f4;
+        --title-admin-page: black;
     }
 
-    ::selection {
+    {% comment %} ::selection {
         background: var(--secondary-color);
         color:var(--primary-color);
         opacity:1
@@ -21,7 +27,7 @@
         background: var(--secondary-color);
         color:var(--primary-color);
         opacity:1
-    }
+    } {% endcomment %}
     body {
         font-family:
         -apple-system,
@@ -49,9 +55,9 @@
     div.breadcrumbs {
         background: var(--primary-color-faded);
     }
-    a:link, a:visited {
+    {% comment %} a:link, a:visited {
         color: var(--primary-color-faded);
-    }
+    } {% endcomment %}
     .selector-chosen h2 {
         background: var(--primary-color-faded) !important;
     }
@@ -61,7 +67,7 @@
     .button.default, input[type=submit].default, .submit-row input.default {
         background: var(--primary-color);
     }
-    .button:active, input[type=submit]:active, input[type=button]:active, .button:focus, input[type=submit]:focus, input[type=button]:focus, .button:hover, input[type=submit]:hover, input[type=button]:hover, a.addlink:hover {
+    .button:active, input[type=submit]:active, input[type=button]:active, .button:focus, input[type=submit]:focus, input[type=button]:focus, .button:hover, input[type=submit]:hover, input[type=button]:hover {
         background: var(--primary-color-faded);
         opacity: 1;
     }
@@ -104,7 +110,21 @@
         display: inline-block;
     }
 
+    #user-tools a:focus, #user-tools a:hover {
+        color: #333333;
+        border-bottom: none;
+        cursor: pointer;
+    }
+
 </style>
+{% endblock %}
+
+{% block extrahead %}
+    <link rel="shortcut icon" href="{% static 'img/favicon.ico' %}" type="image/icon">
+{% endblock %}
+
+{% block branding %}
+    <img src="{% static 'img/header.png' %}" alt="Cusur" width="180"/>
 {% endblock %}
 
 {% block welcome-msg %}

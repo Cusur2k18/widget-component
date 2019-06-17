@@ -7,21 +7,27 @@ from django.core.cache import cache
 from .models import Agent
 
 CACHE_TTL = getattr(settings, 'CACHE_TTL', DEFAULT_TIMEOUT)
+COLORS = {
+		3: ['green', 'yellow', 'red'],
+		5: ['blue', 'green', 'yellow', 'orange', 'red'],
+		6: ['green', 'yellow', 'orange', 'red', 'purple', 'redbrown']
+}
 
 @cache_page(CACHE_TTL)
 def widget(request):
 	agents = Agent.objects.prefetch_related('metric_set', 'widget').filter(is_active=True)
 	agent = agents.first()
-	colors = {
-		3: ['green', 'yellow', 'red'],
-		5: ['blue', 'green', 'yellow', 'orange', 'red'],
-		6: ['green', 'yellow', 'orange', 'red', 'purple', 'redbrown']
-	}
-	# import pdb; pdb.set_trace()
+
 	if (agent is not None):
-		return render(request, 'widget/agent.html', { "agent": agent, "colors": colors, "total": range(1, agent.widget.total_level + 1) })
+		return render(request, 'widget/agent.html', { "agent": agent, "colors": COLORS, "total": range(1, agent.widget.total_level + 1) })
 	
 	return render(request, 'partials/404.html', {})
+
+def preview(request, id):
+	# import pdb; pdb.set_trace()
+	agent = Agent.objects.prefetch_related('metric_set', 'widget').get(pk=id)
+	return render(request, 'widget/agent.html', { "agent": agent, "colors": COLORS, "total": range(1, agent.widget.total_level + 1), "preview": True })
+
 
 
 def clear_cache(request):
