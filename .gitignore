@@ -9,3 +9,5 @@ widget.css
 *.pyc
 staticfiles
 .env
+
+manual/

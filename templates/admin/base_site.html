@@ -116,11 +116,30 @@
         cursor: pointer;
     }
 
+    #agent_form .inline-group .tabular td.original p {
+        left: unset;
+    }
+
 </style>
 {% endblock %}
 
 {% block extrahead %}
     <link rel="shortcut icon" href="{% static 'img/favicon.ico' %}" type="image/icon">
+
+    <script>
+    document.addEventListener("DOMContentLoaded", function(){
+        // Handler when the DOM is fully loaded
+        var $btn = document.getElementById('clear-cache-btn');
+        $btn.addEventListener('click', function(e){
+            const sureDelete = confirm('Estas seguro de borrar el caché?')
+            if (!sureDelete) {
+            e.preventDefault()
+            return
+            }
+        })
+
+    });
+    </script>
 {% endblock %}
 
 {% block branding %}
