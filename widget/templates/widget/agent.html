@@ -17,7 +17,9 @@
 </head>
 <body>
 
-{% comment %} <div class="app-container"> {% endcomment %}
+{% if preview %}
+<div class="app-container">
+{% endif %}
   <!-- Air Checker Component -->
   <div id="ac-component">
       <!-- Heading -->
@@ -49,7 +51,9 @@
       </div>
   </div>
 
-{% comment %} </div> {% endcomment %}
+{% if preview %}
+</div>
+{% endif %}
 
 <script src="{% static 'js/widget.js'%}"></script>
   

@@ -34,6 +34,7 @@ ADMINS = [(config('ADMIN_NAME', config('ADMIN_EMAIL')))]
 # Application definition
 
 INSTALLED_APPS = [
+    'admin_actions',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

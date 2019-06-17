@@ -30,6 +30,13 @@
 
     }
 
+    function setBlankToAdminAction() {
+      const $links = $('.admin-action-list-item a, .object-tools li > a:contains(Previsualizar)');
+      $links.each(function(_, el) {
+        $(el).attr('target', '_blank')
+      })
+    }
+
     function addLevelHelpermImage(level) {
       const $widgetContainer = $('#widget-group')
       const $imageHelper = $('<img />').attr("src", '/static/img/' + level + '-widget-complete.png')
@@ -73,6 +80,8 @@
       initListeners()
 
       setDefaultLevelDropdown()
+
+      setBlankToAdminAction()
     }
   
     init()

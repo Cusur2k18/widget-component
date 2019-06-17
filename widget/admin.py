@@ -1,7 +1,10 @@
 from django.contrib import admin
 from django.contrib.admin import AdminSite
 from django.contrib.auth.admin import UserAdmin
+from admin_actions.admin import ActionsModelAdmin
 from django.contrib.auth.models import User
+from django.urls import reverse
+from django.shortcuts import redirect
 
 from .models import Agent, Metric, Widget
 
@@ -22,10 +25,13 @@ class WidgetInline(admin.TabularInline):
     extra = 1
 
 
-class AgentAdmin(admin.ModelAdmin):
+class AgentAdmin(ActionsModelAdmin):
 
     class Media:
         js = ('admin/js/vendor/jquery/jquery.min.js', 'admin/js/jquery.init.js', 'js/main.js',)
+
+    actions_row = ('preview_agent', )
+    actions_detail = ('preview_agent', )
 
     # Index view
     list_display = ('_name', '_is_active', '_updated_at',)
@@ -45,6 +51,11 @@ class AgentAdmin(admin.ModelAdmin):
             e.is_active=not e.is_active
             e.save()
     toogle_active.short_description = 'Activar/Desactivar agente(s)'
+
+    def preview_agent(self, request, pk):
+        return redirect(reverse('agent_preview', args=[pk]))
+    preview_agent.short_description = 'Previsualizar'
+    preview_agent.url_path = 'preview'
 
 
 
